@@ -1,222 +1,163 @@
 <h1 align="center">pico-ducky</h1>
 
-<div align="center">
-  <strong>Make a cheap but powerful USB Rubber Ducky with a Raspberry Pi Pico</strong>
-</div>
+## Hızlı Başlangıç ​​Kılavuzu
+USB Rubber Ducky'nizi 5 dakikadan daha kısa sürede kurun ve çalışmasını sağlayın.
 
-<br />
+1. En son sürümü [Sürümler](https://github.com/dbisu/pico-ducky/releases) sayfasından indirin.
 
-<div align="center">
-  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/dbisu/pico-ducky">
-  <img alt="GitHub license" src="https://img.shields.io/github/license/dbisu/pico-ducky">
-  <a href="https://github.com/dbisu/pico-ducky/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/dbisu/pico-ducky"></a>
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/dbisu/pico-ducky">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dbisu/pico-ducky">
-</div>
+2. Önyükleme düğmesini basılı tutarak cihazı bir USB bağlantı noktasına takın. RPI-RP2 adında çıkarılabilir bir medya cihazı olarak görünecektir.
 
-<br />
+3. CircutlPython'u Pico'ya yükleyin
 
-## Quick Start Guide
-Install and have your USB Rubber Ducky working in less than 5 minutes.
+Pico kartı kullanıyorsanız:
 
-1. Download the latest release from the [Releases](https://github.com/dbisu/pico-ducky/releases) page.
+Adafruit-circuitpython-raspberry_pi_pico-en_US-8.0.0.uf2 dosyasını Pico'nun (RPI-RP2) köküne kopyalayın. Cihaz yeniden başlatılacak ve bir saniye kadar sonra CIRCUITPY olarak yeniden bağlanacaktır.
 
-2. Plug the device into a USB port while holding the boot button. It will show up as a removable media device named RPI-RP2.
+Pico W kartı kullanıyorsanız:
 
-3. Install CircutlPython on the Pico or Pico W
+Adafruit-circuitpython-raspberry_pi_pico_w-en_US-8.0.0.uf2 dosyasını Pico'nun (RPI-RP2) köküne kopyalayın. Cihaz yeniden başlatılacak ve bir saniye kadar sonra CIRCUITPY olarak yeniden bağlanacaktır.
 
-If using a Pico board:
+4. lib klasörünü CIRCUITPY'nin köküne kopyalayın
 
-Copy the adafruit-circuitpython-raspberry_pi_pico-en_US-8.0.0.uf2 file to the root of the Pico (RPI-RP2). The device will reboot and after a second or so, it will reconnect as CIRCUITPY.
+5. *.py'yi DEVRE'nin köküne kopyalayın
 
-If using a Pico W board:
+6. Kurulum moduna girmek için README.md'deki talimatları izleyin.
 
-Copy the adafruit-circuitpython-raspberry_pi_pico_w-en_US-8.0.0.uf2 file to the root of the Pico (RPI-RP2). The device will reboot and after a second or so, it will reconnect as CIRCUITPY.
+7. Payload'ınızı payload.dd olarak CIRCUITPY'nin köküne kopyalayın
 
-4. Copy the lib folder to the root of the CIRCUITPY
+8. Aygıtı USB bağlantı noktasından çıkarın ve kurulum atlama kablosunu çıkarın.
 
-5. Copy *.py to the root of the CIRCUITPY
+Pico-Ducky'nizin tadını çıkarın.
 
-6. Follow the instructions in README.md to enter setup mode
+## Kurulum modu
 
-7. Copy your payload as payload.dd to the root of the CIRCUITPY
+Yükü düzenlemek için, pin 1'i ('GP0') pin 3'e ('GND') bağlayarak kurulum moduna girin; bu, pico-ducky'nin yükü kendi makinenize enjekte etmesini durduracaktır.
+Bunu yapmanın en kolay yolu aşağıda görüldüğü gibi bu pinlerin arasına bir jumper teli kullanmaktır.
 
-8. Unplug the device from the USB port and remove the setup jumper.
+![Atlatma kablosuyla kurulum modu](images/setup-mode.png)
 
-Enjoy your Pico-Ducky.
+## USB etkinleştirme/devre dışı bırakma modu
 
-## Setup mode
+Pico-ducky'nin gizlilik amacıyla bir USB yığın depolama aygıtı olarak görünmemesini istiyorsanız bu talimatları izleyin.
+- Kurulum moduna girin.
+- Payload komut dosyanızı pico-ducky'ye kopyalayın.
+- Pico'yu ana bilgisayarınızdan ayırın.
+- Pim 18 ("GND") ile pim 20 ("GPIO15") arasına bir aktarma kablosu bağlayın.
+Bu, pico-ducky'nin hedef bilgisayara takıldığında bir USB sürücü olarak görünmesini önleyecektir.
+- Jumper'ı çıkarın ve yeniden programlamak için bilgisayarınıza yeniden bağlayın.
 
-To edit the payload, enter setup mode by connecting the pin 1 (`GP0`) to pin 3 (`GND`), this will stop the pico-ducky from injecting the payload in your own machine.
-The easiest way to do so is by using a jumper wire between those pins as seen bellow.
+Pico: Varsayılan mod, USB yığın depolamanın etkin olduğu moddur.
+Pico W: Varsayılan mod USB yığın depolamadır **devre dışı**
 
-![Setup mode with a jumper](images/setup-mode.png)
-
-## USB enable/disable mode
-
-If you need the pico-ducky to not show up as a USB mass storage device for stealth, follow these instructions.  
-- Enter setup mode.    
-- Copy your payload script to the pico-ducky.  
-- Disconnect the pico from your host PC.
-- Connect a jumper wire between pin 18 (`GND`) and pin 20 (`GPIO15`).  
-This will prevent the pico-ducky from showing up as a USB drive when plugged into the target computer.  
-- Remove the jumper and reconnect to your PC to reprogram.  
-
-Pico: The default mode is USB mass storage enabled.   
-Pico W: The default mode is USB mass storage **disabled**  
-
-![USB enable/disable mode](images/usb-boot-mode.png)
+![USB etkinleştirme/devre dışı bırakma modu](images/usb-boot-mode.png)
 
 
 -----
 
-# Full Install Instructions
+# Tam Kurulum Talimatları
 
-Install and have your USB Rubber Ducky working in less than 5 minutes.
+USB Rubber Ducky'nizi 5 dakikadan daha kısa sürede kurun ve çalışmasını sağlayın.
 
-1. Clone the repo to get a local copy of the files. `git clone https://github.com/dbisu/pico-ducky.git`
+1. Dosyaların yerel bir kopyasını almak için repoyu klonlayın. 'git klonu https://github.com/dbisu/pico-ducky.git'
 
-2. Download [CircuitPython for the Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/). *Updated to 8.0.0  
-   Download [CircuitPython for the Raspberry Pi Pico W](https://circuitpython.org/board/raspberry_pi_pico_w/). *Updated to 8.0.0
+2. [Raspberry Pi Pico için CircuitPython'u](https://circuitpython.org/board/raspberry_pi_pico/) indirin. *8.0.0'a güncellendi
 
-3. Plug the device into a USB port while holding the boot button. It will show up as a removable media device named `RPI-RP2`.
+3. Önyükleme düğmesini basılı tutarak cihazı bir USB bağlantı noktasına takın. 'RPI-RP2' adında çıkarılabilir bir medya cihazı olarak görünecektir.
 
-4. Copy the downloaded `.uf2` file to the root of the Pico (`RPI-RP2`). The device will reboot and after a second or so, it will reconnect as `CIRCUITPY`.
+4. İndirilen `.uf2` dosyasını Pico'nun köküne (`RPI-RP2`) kopyalayın. Cihaz yeniden başlatılacak ve bir saniye kadar sonra 'CIRCUITPY' olarak yeniden bağlanacaktır.
 
-5. Download `adafruit-circuitpython-bundle-8.x-mpy-YYYYMMDD.zip` [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest) and extract it outside the device.
+5. `adafruit-circuitpython-bundle-8.x-mpy-YYYYMMDD.zip` dosyasını [buradan](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest) indirin ve cihazın dışına çıkarın.
 
-6. Navigate to `lib` in the recently extracted folder and copy `adafruit_hid` to the `lib` folder on your Raspberry Pi Pico.
+6. Yakın zamanda çıkarılan klasörde `lib`e gidin ve `adafruit_hid`i Raspberry Pi Pico'nuzdaki `lib` klasörüne kopyalayın.
 
-7. Copy `adafruit_debouncer.mpy` and `adafruit_ticks.mpy` to the `lib` folder on your Raspberry Pi Pico.
+7. `adafruit_debouncer.mpy` ve `adafruit_ticks.mpy`yi Raspberry Pi Pico'nuzdaki `lib` klasörüne kopyalayın.
 
-8. Copy `asyncio` to the `lib` folder on your Pico.
+8. 'asyncio'yu Pico'nuzdaki 'lib' klasörüne kopyalayın.
 
-9. Copy `adafruit_wsgi` to the `lib` folder on your Pico.
+9. 'adafruit_wsgi'yi Pico'nuzdaki 'lib' klasörüne kopyalayın.
 
-10. Copy `boot.py` from your clone to the root of your Pico.
+10. Klonunuzdan "boot.py" dosyasını Pico'nuzun kök dizinine kopyalayın.
 
-11. Copy `duckyinpython.py`, `code.py`, `webapp.py`, `wsgiserver.py` to the root folder of the Pico.
+11. `duckyinpython.py`, `code.py`, `webapp.py`, `wsgiserver.py`yi Pico'nun kök klasörüne kopyalayın.
 
-12. *For Pico W Only* Create the file `secrets.py` in the root of the Pico W. This contains the AP name and password to be created by the Pico W.  
-`secrets = { 'ssid' : "BadAPName", 'password' : "badpassword" }`
+12. [Buradan](https://github.com/hak5/usbrubberducky-payloads) bir komut dosyası bulun veya [Ducky Komut Dosyasını kullanarak kendi komut dosyanızı oluşturun](https://docs.hak5.org/hak5-usb-rubber- ducky/ducy-script-basics/hello-world) ve onu Pico'da `payload.dd` olarak kaydedin. Şu anda pico-ducky 3.0'ı değil yalnızca DuckyScript 1.0'ı desteklemektedir.
 
-13. Find a script [here](https://github.com/hak5/usbrubberducky-payloads) or [create your own one using Ducky Script](https://docs.hak5.org/hak5-usb-rubber-ducky/ducky-script-basics/hello-world) and save it as `payload.dd` in the Pico. Currently, pico-ducky only supports DuckyScript 1.0, not 3.0.
+13. Dikkatli olun, eğer cihazınız [kurulum modunda](#setup-mode) değilse cihaz yeniden başlatılacak ve yarım saniye sonra komut dosyası çalışacaktır.
 
-14. Be careful, if your device isn't in [setup mode](#setup-mode), the device will reboot and after half a second, the script will run.
 
-15. **Please note:** by default Pico W will not show as a USB drive
 
-### Pico W Web Service
-The Pico W AP defaults to ip address `192.168.4.1`.  You should be able to find the webservice at `http://192.168.4.1:80`  
+## USB etkinleştirme/devre dışı bırakma modu
 
-The following endpoints are available on the webservice:
-```
-/
-/new
-/ducky
-/edit/<filename>
-/write/<filename>
-/run/<filename>
-```
+Pico-ducky'nin gizlilik amacıyla bir USB yığın depolama aygıtı olarak görünmemesini istiyorsanız bu talimatları izleyin.
+- Kurulum moduna girin.
+- Payload komut dosyanızı pico-ducky'ye kopyalayın.
+- Pico'yu ana bilgisayarınızdan ayırın.
+- Pim 18 ("GND") ile pim 20 ("GPIO15") arasına bir aktarma kablosu bağlayın.
+Bu, pico-ducky'nin hedef bilgisayara takıldığında bir USB sürücü olarak görünmesini önleyecektir.
+- Jumper'ı çıkarın ve yeniden programlamak için bilgisayarınıza yeniden bağlayın.
 
-API endpoints
-```
-/api/run/<filenumber>
-```
+Pico: Varsayılan mod, USB yığın depolamanın etkin olduğu moddur.
+Pico W: Varsayılan mod USB yığın depolamadır **devre dışı**
 
-## Setup mode
 
-To edit the payload, enter setup mode by connecting the pin 1 (`GP0`) to pin 3 (`GND`), this will stop the pico-ducky from injecting the payload in your own machine.
-The easiest way to do so is by using a jumper wire between those pins as seen bellow.
+## Klaveye Dilini Değiştirme
 
-![Setup mode with a jumper](images/setup-mode.png)
+**En son sürüm sayfasına [gidin](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/releases/latest) ve dilinizin listede olup olmadığına bakın.**
 
-## USB enable/disable mode
+#### Diliniz pakette yer alıyorsa
 
-If you need the pico-ducky to not show up as a USB mass storage device for stealth, follow these instructions.  
-- Enter setup mode.    
-- Copy your payload script to the pico-ducky.  
-- Disconnect the pico from your host PC.
-- Connect a jumper wire between pin 18 (`GND`) and pin 20 (`GPIO15`).  
-This will prevent the pico-ducky from showing up as a USB drive when plugged into the target computer.  
-- Remove the jumper and reconnect to your PC to reprogram.  
+'circuitpython-keyboard-layouts-py-XXXXXXXX.zip' adlı 'py' zip dosyasını indirin
 
-Pico: The default mode is USB mass storage enabled.   
-Pico W: The default mode is USB mass storage **disabled**  
+**NOT: Cihazdaki Circuitpython sürümünü hedefleyen mpy sürümünü kullanabilirsiniz, ancak Raspberry Pi Pico'da buna ihtiyacınız yoktur - bunlar yalnızca yükte dosya boyutunu ve bellek kullanımını azaltır; bu da pico'da bol miktarda bulunur. .**
 
-![USB enable/disable mode](images/usb-boot-mode.png)
+#### Diliniz/düzeniniz pakette yoksa
 
-## Multiple payloads
-
-Multiple payloads can be stored on the Pico and Pico W.  
-To select a payload, ground one of these pins:
-- GP4 - payload.dd
-- GP5 - payload2.dd
-- GP10 - payload3.dd
-- GP11 - payload4.dd
-
-## Changing Keyboard Layouts
-
-Copied from [Neradoc/Circuitpython_Keyboard_Layouts](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/blob/main/PICODUCKY.md)  
-
-#### How to use one of these layouts with the pico-ducky repository.
-
-**Go to the [latest release page](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/releases/latest), look if your language is in the list.**
-
-#### If your language/layout is in the bundle
-
-Download the `py` zip, named `circuitpython-keyboard-layouts-py-XXXXXXXX.zip`
-
-**NOTE: You can use the mpy version targetting the version of Circuitpython that is on the device, but on Raspberry Pi Pico you don't need it - they only reduce file size and memory use on load, which the pico has plenty of.**
-
-#### If your language/layout is not in the bundle
-
-Try the online generator, it should get you a zip file with the bundles for yout language
+Çevrimiçi oluşturucuyu deneyin, size dilinize yönelik paketleri içeren bir zip dosyası verecektir.
 
 https://www.neradoc.me/layouts/
 
-#### Now you have a zip file
+#### Artık bir zip dosyanız var
 
-#### Find your language/layout in the lib directory
+#### Dilinizi/düzeninizi lib dizininde bulun
 
-For a language `LANG`, copy the following files from the zip's `lib` folder to the `lib` directory of the board.  
-**DO NOT** modify the adafruit_hid directory. Your files go directly in `lib`.  
-**DO NOT** change the names or extensions of the files. Just pick the right ones.  
-Replace `LANG` with the letters for your language of choice.
+Bir 'LANG' dili için, aşağıdaki dosyaları zip'in 'lib' klasöründen panonun 'lib' dizinine kopyalayın.
+**adafruit_hid dizinini DEĞİŞTİRMEYİN**. Dosyalarınız doğrudan 'lib'e gider.
+**Dosyaların adlarını veya uzantılarını DEĞİŞTİRMEYİN**. Sadece doğru olanları seçin.
+'LANG'ı seçtiğiniz dilin harfleriyle değiştirin.
 
 - `keyboard_layout_win_LANG.py`
 - `keycode_win_LANG.py`
 
-Don't forget to get [the adafruit_hid library](https://github.com/adafruit/Adafruit_CircuitPython_HID/releases/latest).
+Almayı unutma [the adafruit_hid library](https://github.com/adafruit/Adafruit_CircuitPython_HID/releases/latest).
 
-This is what it should look like **if your language is French for example**.
+**Örneğin diliniz Fransızca ise** bu şekilde görünmesi gerekir.
 
 ![CIRCUITPY drive screenshot](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/raw/main/docs/drive_pico_ducky.png)
 
-#### Modify the pico-ducky code to use your language file:
+#### Dil dosyanızı kullanmak için pico-ducky kodunu değiştirin:
 
-At the start of the file comment out these lines:
+Dosyanın başında şu satırları yorumlayın:
 
 ```py
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
 from adafruit_hid.keycode import Keycode
 ```
 
-Uncomment these lines:  
+Bu satırların yorumunu kaldırın:
 *Replace `LANG` with the letters for your language of choice. The name must match the file (without the py or mpy extension).*
 ```py
 from keyboard_layout_win_LANG import KeyboardLayout
 from keycode_win_LANG import Keycode
 ```
 
-##### Example:  Set to German Keyboard (WIN_DE)
+##### Örnek: Almanca Klavyeye Ayarla (WIN_DE)
 
 ```py
 from keyboard_layout_win_de import KeyboardLayout
 from keycode_win_de import Keycode
 ```
 
-Copy the files keyboard_layout_win_de.mpy and keycode_win_de.mpy to the /lib folder on the Pico board
+Keyboard_layout_win_de.mpy ve keycode_win_de.mpy dosyalarını Pico panosundaki /lib klasörüne kopyalayın
 ```
 adafruit_hid/
 keyboard_layout_win_de.mpy
@@ -224,36 +165,7 @@ keycode_win_de.mpy
 ```
 
 
-
-## Useful links and resources
-
-### How to recover your Pico if it becomes corrupted or doesn't boot.
-
-[Reset Instructions](RESET.md)
-
-### Installation Tool
-
-[raspberrydeveloper](https://github.com/raspberrydeveloper) Created a tool to convert a blank RPi Pico to a ducky.  
-You can find the tool [here](https://github.com/raspberrydeveloper/pyducky)
-
-### Docs
-
-[CircuitPython](https://circuitpython.readthedocs.io/en/6.3.x/README.html)
-
-[CircuitPython HID](https://learn.adafruit.com/circuitpython-essentials/circuitpython-hid-keyboard-and-mouse)
-
-[Ducky Script](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Duckyscript)
-
-### Video tutorials
-
-[pico-ducky tutorial by **NetworkChuck**](https://www.youtube.com/watch?v=e_f9p-_JWZw)
-
-[USB Rubber Ducky playlist by **Hak5**](https://www.youtube.com/playlist?list=PLW5y1tjAOzI0YaJslcjcI4zKI366tMBYk)
-
-[CircuitPython tutorial on the Raspberry Pi Pico by **DroneBot Workshop**](https://www.youtube.com/watch?v=07vG-_CcDG0)
-
-
-## Related Projects
+## Yararlanılan Proje
 
 [Defcon31-ducky](https://github.com/iot-pwn/defcon31-ducky)  
 There are still a few of these available to purchase, US only.
