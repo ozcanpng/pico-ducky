@@ -80,7 +80,7 @@ USB Rubber Ducky'nizi 5 dakikadan daha kısa sürede kurun ve çalışmasını s
 
 11. `duckyinpython.py`, `code.py`, `webapp.py`, `wsgiserver.py`yi Pico'nun kök klasörüne kopyalayın.
 
-12. [Buradan](https://github.com/hak5/usbrubberducky-payloads) bir komut dosyası bulun veya [Ducky Komut Dosyasını kullanarak kendi komut dosyanızı oluşturun](https://docs.hak5.org/hak5-usb-rubber-ducky/ducy-script-basics/hello-world) ve onu Pico'da `payload.dd` olarak kaydedin. Şu anda pico-ducky 3.0'ı değil yalnızca DuckyScript 1.0'ı desteklemektedir.
+12. [Buradan](https://github.com/hak5/usbrubberducky-payloads) bir komut dosyası bulun veya [Ducky Komut Dosyasını kullanarak kendi komut dosyanızı oluşturun](https://docs.hak5.org/hak5-usb-rubber-ducky/ducky-script-basics/hello-world) ve onu Pico'da `payload.dd` olarak kaydedin. Şu anda pico-ducky 3.0'ı değil yalnızca DuckyScript 1.0'ı desteklemektedir.
 
 13. Dikkatli olun, eğer cihazınız kurulum modunda değilse cihaz yeniden başlatılacak ve yarım saniye sonra komut dosyası çalışacaktır.
 
