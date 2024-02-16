@@ -110,12 +110,6 @@ Pico W: Varsayılan mod USB yığın depolamadır **devre dışı**
 
 **NOT: Cihazdaki Circuitpython sürümünü hedefleyen mpy sürümünü kullanabilirsiniz, ancak Raspberry Pi Pico'da buna ihtiyacınız yoktur - bunlar yalnızca yükte dosya boyutunu ve bellek kullanımını azaltır; bu da pico'da bol miktarda bulunur. .**
 
-#### Diliniz/düzeniniz pakette yoksa
-
-Çevrimiçi oluşturucuyu deneyin, size dilinize yönelik paketleri içeren bir zip dosyası verecektir.
-
-https://www.neradoc.me/layouts/
-
 #### Artık bir zip dosyanız var
 
 #### Dilinizi/düzeninizi lib dizininde bulun
